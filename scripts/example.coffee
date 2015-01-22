@@ -13,7 +13,7 @@ child_process = require 'child_process'
 module.exports = (robot) ->
   robot.hear /^@tv ((https\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+)$/i, (msg) ->
     child_process.exec "open #{msg.match[1]}", (error, stdout, stderr) ->
-      msg.send "開いたよ"
+      msg.send (msg.random(["開きます", "開いたよ", "開くよ"]) + msg.random(["", "", "", "", "。", "。", "!", "( ´ω`)", "( ᐛ👐)"]))
 
   # robot.hear /badger/i, (msg) ->
   #   msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
