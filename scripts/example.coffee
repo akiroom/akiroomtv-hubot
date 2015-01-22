@@ -1,3 +1,5 @@
+child_process = require 'child_process'
+
 # Description:
 #   Example scripts for you to examine and try out.
 #
@@ -9,6 +11,9 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+  robot.hear /^@tv ((https\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+)$/i, (msg) ->
+    child_process.exec "open #{msg.match[1]}", (error, stdout, stderr) ->
+      msg.send "開いたよ"
 
   # robot.hear /badger/i, (msg) ->
   #   msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
